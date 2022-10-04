@@ -1,13 +1,10 @@
 import React from 'react'
+import CommentListItem from './CenterItemReactionsComments'
+
 
 function CenterItemReactions({currentlyPlaying, setCurrentlyPlaying}){
 
-    const commentListItems = currentlyPlaying.comments.map(comment => (
-        <li>
-            <p>{comment.content}</p>
-            <span className="commenter-name">{comment.commenterName || 'unknown'}</span>            
-        </li>
-    ))
+    const commentListItems = currentlyPlaying.comments.map(comment => <CommentListItem key={comment.id} comment={comment}/>)
 
     return (
         <>
