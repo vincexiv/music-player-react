@@ -1,20 +1,26 @@
 import React from 'react'
 
-function CenterItemReactions(){
+function CenterItemReactions({currentlyPlaying, setCurrentlyPlaying}){
+
+    const commentListItems = currentlyPlaying.comments.map(comment => (
+        <li>
+            <p>{comment.content}</p>
+            <span className="commenter-name">{comment.commenterName || 'unknown'}</span>            
+        </li>
+    ))
+
     return (
         <>
             <div id="reactions">
                 <div className="reactions-details">
-                    <ul id="comment-list">
-                        
-                    </ul>
+                    <ul id="comment-list">{commentListItems}</ul>
                 </div>
             </div>
             <div className="reactions-summary">
                 <div id="comment-count">
-                    <p><span className="count">0</span> comments</p>
+                    <p><span className="count">{currentlyPlaying.comments.length}</span> comments</p>
                 </div>
-                <p id="like-count"><span className="count">107</span> likes</p>
+                <p id="like-count"><span className="count">{currentlyPlaying.likes}</span> likes</p>
             </div>
             
             <form id="add-comment-form">

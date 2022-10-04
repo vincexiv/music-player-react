@@ -3,13 +3,13 @@ import CenterItemCurrentlyPlaying from './CenterItemCurrentlyPlaying'
 import CenterItemControls from './CenterItemControls'
 import CenterItemReactions from './CenterItemReactions'
 
-function CenterItem(){
+function CenterItem({currentlyPlaying, setCurrentlyPlaying}){
     return (
         <div className="center-item">
             <div id="controls-and-stuff">
-                <CenterItemCurrentlyPlaying />
+                <CenterItemCurrentlyPlaying currentlyPlaying={currentlyPlaying}/>
                 <CenterItemControls />
-                <CenterItemReactions />
+                <CenterItemReactions currentlyPlaying={currentlyPlaying} setCurrentlyPlaying={setCurrentlyPlaying}/>
             </div>
         </div>      
     )    

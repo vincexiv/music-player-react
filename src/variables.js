@@ -8,4 +8,27 @@ const availablePlayableSongs = {
     "A Virus Called The Blues": new Audio('assets/music/blues-rock/Billy Jenkins - A Virus Called The Blues.m4a')
 }
 
-export {availablePlayableSongs, apiHost}
+let lastPlayedSong = {
+        id: 7,
+        playList: "bluesJazz",
+        songName: "Invitation To The Blues",
+        songArtist: "Claudia Bettinaglio",
+        path: "./assets/songs/blues-jazz/Claudia Bettinaglio - Invitation To The Blues.mp3",
+        banner: "",
+        likes: 422,
+        favorited: true,
+        comments: [
+            {
+            id: 1,
+            commenterName: "Romulo",
+            content: "Awesome!"
+            },
+            {
+            id: 2,
+            commenterName: "Antonio",
+            content: "I think of her every time I hear this song!"
+            }
+        ]
+    }
+
+export {availablePlayableSongs, apiHost, lastPlayedSong}

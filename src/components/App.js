@@ -1,5 +1,5 @@
-import React, {useRef} from "react";
-import { apiHost, availablePlayableSongs } from "../variables";
+import React, {useState} from "react";
+import { apiHost, availablePlayableSongs, lastPlayedSong } from "../variables";
 import { useQuery } from "../customHooks";
 import NavBar from "./NavBar";
 import LeftItem from "./LeftItem";
@@ -11,8 +11,10 @@ import '../css/index.css'
 import '../css/responsive.css'
 import '../css/range-and-scrollbar.css'
 
+
 function App(){
   const [activePlaylist, setActivePlaylist] = useQuery(`${apiHost}/musicInfo?favorited=true`, "favorites")
+  const [currentlyPlaying, setCurrentlyPlaying] = useState(lastPlayedSong)
 
 
   function handlePlaylistChange(newPlaylist){
@@ -28,6 +30,12 @@ function App(){
   }
 
 
+  function handleMoveToCurrentlyPlaying(song){
+    console.log("clicked song: ", song)
+    setCurrentlyPlaying(song)
+  }
+
+
   return (
     <>
       <NavBar />
@@ -35,8 +43,8 @@ function App(){
       <section className="container">
         <div id="main-content">
           <LeftItem />
-          <CenterItem />
-          <RightItem activePlaylist={activePlaylist} handlePlaylistChange={handlePlaylistChange}/>
+          <CenterItem currentlyPlaying={currentlyPlaying} setCurrentlyPlaying={setCurrentlyPlaying}/>
+          <RightItem activePlaylist={activePlaylist} handlePlaylistChange={handlePlaylistChange} handleMoveToCurrentlyPlaying={handleMoveToCurrentlyPlaying}/>
         </div>
       </section>
 

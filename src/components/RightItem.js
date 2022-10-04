@@ -1,10 +1,10 @@
 import React, {useRef} from 'react'
 import PlaylistItem from './RightItemPlaylistItem'
 
-function RightItem({activePlaylist, handlePlaylistChange}){
+function RightItem({activePlaylist, handlePlaylistChange, handleMoveToCurrentlyPlaying}){
     console.log("activeplaylist: ",activePlaylist)
     
-    const songItems = activePlaylist.data.map(songData => <PlaylistItem key={songData.id} songData={songData} />)
+    const songItems = activePlaylist.data.map(songData => <PlaylistItem key={songData.id} songData={songData} handleMoveToCurrentlyPlaying={handleMoveToCurrentlyPlaying} />)
 
     function showStatus(playlist){
         return (activePlaylist.name === playlist ? "active" : "inactive")
@@ -32,8 +32,7 @@ function RightItem({activePlaylist, handlePlaylistChange}){
 
             <div className="bottom">
                 <h1>Recommended For You</h1>
-                <ul id="recommended-for-you">                               
-                </ul>
+                <ul id="recommended-for-you"></ul>
             </div>
         </div>        
     )
