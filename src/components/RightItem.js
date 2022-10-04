@@ -1,7 +1,7 @@
 import React, {useRef} from 'react'
 import PlaylistItem from './RightItemPlaylistItem'
 
-function RightItem({activePlaylist}){
+function RightItem({activePlaylist, handlePlaylistChange}){
     console.log("activeplaylist: ",activePlaylist)
     
     const songItems = activePlaylist.data.map(songData => <PlaylistItem key={songData.id} songData={songData} />)
@@ -17,9 +17,9 @@ function RightItem({activePlaylist}){
             <ul id="up-next"></ul>
 
             <div id="playlist-buttons">
-                <button className={`btn ${showStatus("favorites")}`} id="favorites-playlist">Favorites</button>
-                <button className={`btn ${showStatus("blues-rock")}`} id="blues-rock-playlist">Blues/Rock</button>
-                <button className={`btn ${showStatus("blues-jazz")}`} id="blues-jazz-playlist">Blues/Jazz</button>
+                <button className={`btn ${showStatus("favorites")}`} id="favorites-playlist" onClick={()=>handlePlaylistChange("favorites")}>Favorites</button>
+                <button className={`btn ${showStatus("bluesRock")}`} id="blues-rock-playlist" onClick={()=>handlePlaylistChange("bluesRock")}>Blues/Rock</button>
+                <button className={`btn ${showStatus("bluesJazz")}`} id="blues-jazz-playlist" onClick={()=>handlePlaylistChange("bluesJazz")}>Blues/Jazz</button>
                 <button className={`btn display-none ${showStatus("favorites")}`} id="funk-disco-playlist">Funk/Disco</button>
                 <button className="btn">More...</button>
             </div>

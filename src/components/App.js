@@ -14,6 +14,20 @@ import '../css/range-and-scrollbar.css'
 function App(){
   const [activePlaylist, setActivePlaylist] = useQuery(`${apiHost}/musicInfo?favorited=true`, "favorites")
 
+
+  function handlePlaylistChange(newPlaylist){
+    if(newPlaylist === "favorites"){
+      fetch(`${apiHost}/musicInfo?favorited=true`)
+        .then(result => result.json())
+        .then(data => setActivePlaylist({name: newPlaylist, data: data}))
+    }else{
+      fetch(`${apiHost}/musicInfo?playList=${newPlaylist}`)
+        .then(result => result.json())
+        .then(data => setActivePlaylist({name: newPlaylist, data: data}))
+    }
+  }
+
+
   return (
     <>
       <NavBar />
@@ -22,7 +36,7 @@ function App(){
         <div id="main-content">
           <LeftItem />
           <CenterItem />
-          <RightItem activePlaylist={activePlaylist}/>
+          <RightItem activePlaylist={activePlaylist} handlePlaylistChange={handlePlaylistChange}/>
         </div>
       </section>
 
