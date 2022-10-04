@@ -8,6 +8,8 @@ const availablePlayableSongs = {
     "A Virus Called The Blues": new Audio('assets/music/blues-rock/Billy Jenkins - A Virus Called The Blues.m4a')
 }
 
+let currentUser = "Vincent"
+
 let lastPlayedSong = {
         id: 7,
         playList: "bluesJazz",
@@ -31,4 +33,4 @@ let lastPlayedSong = {
         ]
     }
 
-export {availablePlayableSongs, apiHost, lastPlayedSong}
+export {availablePlayableSongs, apiHost, lastPlayedSong, currentUser}
