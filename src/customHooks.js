@@ -12,5 +12,4 @@ function useQuery(url, playlist){
     return [state, setState]
 }
 
-
 export {useQuery}

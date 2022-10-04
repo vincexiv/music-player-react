@@ -7,7 +7,7 @@ function CenterItem({currentlyPlaying, setCurrentlyPlaying}){
     return (
         <div className="center-item">
             <div id="controls-and-stuff">
-                <CenterItemCurrentlyPlaying currentlyPlaying={currentlyPlaying}/>
+                <CenterItemCurrentlyPlaying currentlyPlaying={currentlyPlaying} setCurrentlyPlaying={setCurrentlyPlaying}/>
                 <CenterItemControls />
                 <CenterItemReactions currentlyPlaying={currentlyPlaying} setCurrentlyPlaying={setCurrentlyPlaying}/>
             </div>
