@@ -13,25 +13,26 @@ import '../css/range-and-scrollbar.css'
 
 
 function App(){
-  const [activePlaylist, setActivePlaylist] = useQuery(`${apiHost}/musicInfo?favorited=true`, "favorites")
+  const [activePlaylist, setActivePlaylist] = useQuery(`${apiHost}/musicInfo?_embed=comments&favorited=true`, "favorites")
   const [currentlyPlaying, setCurrentlyPlaying] = useState(lastPlayedSong)
 
 
   function handlePlaylistChange(newPlaylist){
     if(newPlaylist === "favorites"){
-      fetch(`${apiHost}/musicInfo?favorited=true`)
+      fetch(`${apiHost}/musicInfo?_embed=comments&favorited=true`)
         .then(result => result.json())
         .then(data => setActivePlaylist({name: newPlaylist, data: data}))
     }else{
-      fetch(`${apiHost}/musicInfo?playList=${newPlaylist}`)
+      fetch(`${apiHost}/musicInfo?_embed=comments&playList=${newPlaylist}`)
         .then(result => result.json())
         .then(data => setActivePlaylist({name: newPlaylist, data: data}))
     }
   }
 
+  console.log("active playlist: ", activePlaylist)
+
 
   function handleMoveToCurrentlyPlaying(song){
-    console.log("clicked song: ", song)
     setCurrentlyPlaying(song)
   }
 
