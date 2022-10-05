@@ -1,12 +1,12 @@
 import React from "react";
 import { SongDetailsContextProvider } from "./SongDetailsContextProvider";
-import ReactDOM from "react-dom";
+import {createRoot} from 'react-dom/client'
 import App from "./components/App";
 
 
-ReactDOM.render(
-        <SongDetailsContextProvider>
-            <App />
-        </SongDetailsContextProvider>,
-        document.getElementById("root")
-    );
+const root = createRoot(document.getElementById('root'))
+root.render(
+    <SongDetailsContextProvider>
+        <App />
+    </SongDetailsContextProvider>,    
+)
