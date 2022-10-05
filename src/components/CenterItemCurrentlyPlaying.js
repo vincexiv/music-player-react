@@ -1,11 +1,11 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { songDetails } from '../SongDetailsContextProvider'
 import { apiHost } from '../variables'
 import { updateSongDetails } from '../utilityFunctions'
 
 
 function CenterItemCurrentlyPlaying(){
-    const {currentlyPlaying, setCurrentlyPlaying} = useContext(songDetails)
+    const {currentlyPlaying, setCurrentlyPlaying, activePlaylist, setActivePlaylist} = useContext(songDetails)
 
     function handleFavoriteClick(){
         updateSongDetails(`
@@ -14,6 +14,15 @@ function CenterItemCurrentlyPlaying(){
             setCurrentlyPlaying
         )
     }
+
+    useEffect(()=>{
+        if(activePlaylist.name === "favorites"){
+            fetch(`${apiHost}/musicInfo?_embed=comments&favorited=true`)
+            .then(result => result.json())
+            .then(data => setActivePlaylist(initial => ({name: "favorites", data: data})))
+        }
+    }, [currentlyPlaying])
+
 
     return (
         <div id="currently-playing">
