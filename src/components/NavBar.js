@@ -1,10 +1,11 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 
 function NavBar(){
     return (
         <nav>
             <div className="container">
-                <div id="vintage-beats-logo">VintageBeats</div>
+                <NavLink to="/" id="vintage-beats-logo">VintageBeats</NavLink>
                 <ul className="display-flex list-style-none">
                     <li>Our Merch</li>
                     <li>About Us</li>
