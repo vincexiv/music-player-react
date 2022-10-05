@@ -4,7 +4,6 @@ import { apiHost } from "../variables";
 import LeftItem from "./LeftItem";
 import RightItem from "./RightItem";
 import CenterItem from "./CenterItem";
-import Footer from "./Footer"
 
 
 function Home(){
@@ -33,9 +32,7 @@ function Home(){
             <RightItem activePlaylist={activePlaylist} handlePlaylistChange={handlePlaylistChange} />
           </div>
         </section>
-  
-        <Footer />
-      </>
+        </>
   
     )
 }
