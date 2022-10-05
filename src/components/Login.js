@@ -6,7 +6,7 @@ function Login(){
         width: "100%",
         height: "calc(100vh - 4rem)",
         overflow: "hidden",
-        backgroundImage: "url('./assets/images/cassettes(smaller).png')",
+        backgroundImage: "url('./assets/images/cassettes.png')",
         position: "relative"
     }
 
