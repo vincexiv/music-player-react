@@ -1,69 +1,56 @@
-import React from "react";
+import React, {useState, useRef, useContext} from "react";
+import {useNavigate} from 'react-router-dom'
+import { apiHost } from "../variables";
+import { songDetails } from "../SongDetailsContextProvider";
+import {divStyle, h1Style, formStyle, inputStyle, inputLabelStyle, inputParentStyle, buttonStyle} from '../react_styles/login-styles'
 
 function Login(){
+    const {userDetails, setUserDetails} = useContext(songDetails)
+    const [formData, setFormData] = useState({username: "", password: ""})
+    const navigate = useNavigate()
+    const isValidUsername = useRef(true)
 
-    const divStyle = {
-        width: "100%",
-        height: "calc(100vh - 4rem)",
-        overflow: "hidden",
-        backgroundImage: "url('./assets/images/cassettes.png')",
-        position: "relative"
+    function handleInputChange(event){
+
+        if(event.target.name === "username"){
+            isValidUsername.current = /^[A-Za-z0-9]*$/.test(event.target.value);
+        }
+        setFormData(formData => ({...formData, [event.target.name]: event.target.value}))
     }
 
-    const h1Style = {
-        margin: "1rem"
+
+    function handleLogin(event){
+        event.preventDefault()
+
+        if(isValidUsername.current){
+            fetch(`${apiHost}/users?username=${formData.username}&password=${formData.password}`)
+                .then(result => result.json())
+                .then(data => {
+                    if(data){
+                        setUserDetails({isLoggedIn: true, userDetails: data})
+                        navigate("/home")
+                    }
+                })
+        }
     }
 
-    const formStyle = {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        width: "22rem",
-        color: "var(--color-1)",
-        position: "absolute",
-        bottom: "50%",
-    }
-
-    const inputStyle = {
-        border: "none",
-        outline: "none",
-        fontSize: "1rem",
-        color: "var(--color-3)",
-        margin: "1rem",
-        padding: "0.2rem",
-        width: "12rem"
-    }
-
-    const inputLabelStyle = {
-        width: "8rem",
-        margin: "1rem"
-    }
-
-    const inputParentStyle = {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center"
-    }
-
-    const buttonStyle = {
-        outline: "var(--color-1)",
-        color: "white",
-        padding: "0.5rem",
-        margin: "1rem"
-    }
 
     return (
         <div style={divStyle}>
             <div className="container">
-                <form style={formStyle}>
+                <form style={formStyle} onSubmit={handleLogin}>
                     <h1 style={h1Style}>Have an account?</h1>
+                    
+                    {isValidUsername.current ? <></> : <p style={{color: "red", margin: "0.5rem", padding: "1rem"}}>
+                            name should only contain alphanumeric characters</p>}
+
                     <div style={inputParentStyle}>
                         <label for="username" style={inputLabelStyle}>Username</label>
-                        <input type="text" name="username" style={inputStyle}/>
+                        <input type="text" name="username" style={inputStyle} value={formData.username} onChange={(event)=>handleInputChange(event)}/>
                     </div>
                     <div style={inputParentStyle}>
                         <label for="password" style={inputLabelStyle}>Password</label>
-                        <input type="text" name="password" style={inputStyle}/>
+                        <input type="password" name="password" style={inputStyle} value={formData.password} onChange={(event)=>handleInputChange(event)}/>
                     </div>
                     <input type="submit" value="SIGN IN" className="btn" style={buttonStyle}/>
                 </form>

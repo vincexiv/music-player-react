@@ -1,4 +1,5 @@
 import React, {useContext} from "react";
+import {Navigate} from 'react-router-dom'
 import { songDetails } from "../SongDetailsContextProvider";
 import { apiHost } from "../variables";
 import LeftItem from "./LeftItem";
@@ -7,8 +8,11 @@ import CenterItem from "./CenterItem";
 
 
 function Home(){
-    const {activePlaylist, setActivePlaylist} = useContext(songDetails)
+    const {activePlaylist, setActivePlaylist, userDetails} = useContext(songDetails)
   
+    if(!userDetails.isLoggedIn){
+        return <Navigate to="/login"/>
+    }
   
     function handlePlaylistChange(newPlaylist){
       if(newPlaylist === "favorites"){
