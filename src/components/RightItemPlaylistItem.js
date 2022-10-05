@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { currentlyPlayingSong } from '../CurrentlyPlayingContextProvider'
 
-function PlaylistItem({songData, handleMoveToCurrentlyPlaying}){
+
+function PlaylistItem({songData}){
+
+    const {setCurrentlyPlaying} = useContext(currentlyPlayingSong)
+
     return (
-        <li className="song" id={songData.id} onClick={()=>{handleMoveToCurrentlyPlaying(songData)}}>
+        <li className="song" id={songData.id} onClick={()=>{setCurrentlyPlaying(songData)}}>
             <p className="song-name">{songData.songName}</p>
             
             <div className="song-details">

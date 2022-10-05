@@ -8,7 +8,7 @@ function updateSongDetails(url, body, setSong){
         body: JSON.stringify(body)
     })
     .then(result => result.json())
-    .then(data => setSong(data))
+    .then(newData => setSong(data => ({...data, ...newData})))
 }
 
 export {updateSongDetails}

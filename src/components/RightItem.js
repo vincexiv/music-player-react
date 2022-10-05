@@ -1,10 +1,9 @@
-import React, {useRef} from 'react'
+import React from 'react'
 import PlaylistItem from './RightItemPlaylistItem'
 
-function RightItem({activePlaylist, handlePlaylistChange, handleMoveToCurrentlyPlaying}){
-    console.log("activeplaylist: ",activePlaylist)
+function RightItem({activePlaylist, handlePlaylistChange}){
     
-    const songItems = activePlaylist.data.map(songData => <PlaylistItem key={songData.id} songData={songData} handleMoveToCurrentlyPlaying={handleMoveToCurrentlyPlaying} />)
+    const songItems = activePlaylist.data.map(songData => <PlaylistItem key={songData.id} songData={songData} />)
 
     function showStatus(playlist){
         return (activePlaylist.name === playlist ? "active" : "inactive")

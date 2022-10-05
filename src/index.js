@@ -1,6 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
+import { CurrentlyPlayingContextProvider } from "./CurrentlyPlayingContextProvider";
 import ReactDOM from "react-dom";
 import App from "./components/App";
 
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+        <CurrentlyPlayingContextProvider>
+            <App />
+        </CurrentlyPlayingContextProvider>,
+        document.getElementById("root")
+    );

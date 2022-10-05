@@ -14,7 +14,6 @@ import '../css/range-and-scrollbar.css'
 
 function App(){
   const [activePlaylist, setActivePlaylist] = useQuery(`${apiHost}/musicInfo?_embed=comments&favorited=true`, "favorites")
-  const [currentlyPlaying, setCurrentlyPlaying] = useState(lastPlayedSong)
 
 
   function handlePlaylistChange(newPlaylist){
@@ -29,13 +28,6 @@ function App(){
     }
   }
 
-  console.log("active playlist: ", activePlaylist)
-
-
-  function handleMoveToCurrentlyPlaying(song){
-    setCurrentlyPlaying(song)
-  }
-
 
   return (
     <>
@@ -44,8 +36,8 @@ function App(){
       <section className="container">
         <div id="main-content">
           <LeftItem />
-          <CenterItem currentlyPlaying={currentlyPlaying} setCurrentlyPlaying={setCurrentlyPlaying}/>
-          <RightItem activePlaylist={activePlaylist} handlePlaylistChange={handlePlaylistChange} handleMoveToCurrentlyPlaying={handleMoveToCurrentlyPlaying}/>
+          <CenterItem/>
+          <RightItem activePlaylist={activePlaylist} handlePlaylistChange={handlePlaylistChange} />
         </div>
       </section>
 
