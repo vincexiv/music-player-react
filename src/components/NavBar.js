@@ -7,6 +7,7 @@ function NavBar(){
 
     function handleLogout(event){
         setUserDetails({isLoggedIn: false, data: {}})
+        localStorage.removeItem("userDetails")
     }
 
     return (

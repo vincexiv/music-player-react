@@ -42,6 +42,7 @@ function Login(){
                 console.log("ddata awe got back: ", data)
                 if(Boolean(data[0])){
                     setUserDetails({isLoggedIn: true, userDetails: data[0]})
+                    localStorage.setItem("userDetails", JSON.stringify({isLoggedIn: true, userDetails: data[0]}))
                     navigate("/home")
                 }else{
                     setValidityState({isValid: false, message: "error in email or password"})
