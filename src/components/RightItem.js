@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import PlaylistItem from './RightItemPlaylistItem'
 
 function RightItem({activePlaylist, handlePlaylistChange}){
@@ -8,6 +8,8 @@ function RightItem({activePlaylist, handlePlaylistChange}){
     function showStatus(playlist){
         return (activePlaylist.name === playlist ? "active" : "inactive")
     }
+
+
 
     return (
         <div className="right-item">

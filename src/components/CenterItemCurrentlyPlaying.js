@@ -1,11 +1,11 @@
 import React, {useContext} from 'react'
-import { currentlyPlayingSong } from '../CurrentlyPlayingContextProvider'
+import { songDetails } from '../SongDetailsContextProvider'
 import { apiHost } from '../variables'
 import { updateSongDetails } from '../utilityFunctions'
 
 
 function CenterItemCurrentlyPlaying(){
-    const {currentlyPlaying, setCurrentlyPlaying} = useContext(currentlyPlayingSong)
+    const {currentlyPlaying, setCurrentlyPlaying} = useContext(songDetails)
 
     function handleFavoriteClick(){
         updateSongDetails(`

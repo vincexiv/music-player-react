@@ -1,12 +1,12 @@
-import React, {useContext} from "react";
-import { CurrentlyPlayingContextProvider } from "./CurrentlyPlayingContextProvider";
+import React from "react";
+import { SongDetailsContextProvider } from "./SongDetailsContextProvider";
 import ReactDOM from "react-dom";
 import App from "./components/App";
 
 
 ReactDOM.render(
-        <CurrentlyPlayingContextProvider>
+        <SongDetailsContextProvider>
             <App />
-        </CurrentlyPlayingContextProvider>,
+        </SongDetailsContextProvider>,
         document.getElementById("root")
     );

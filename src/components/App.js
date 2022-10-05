@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import { apiHost, availablePlayableSongs, lastPlayedSong } from "../variables";
-import { useQuery } from "../customHooks";
+import React, {useContext} from "react";
+import { songDetails } from "../SongDetailsContextProvider";
+import { apiHost } from "../variables";
 import NavBar from "./NavBar";
 import LeftItem from "./LeftItem";
 import RightItem from "./RightItem";
@@ -13,7 +13,7 @@ import '../css/range-and-scrollbar.css'
 
 
 function App(){
-  const [activePlaylist, setActivePlaylist] = useQuery(`${apiHost}/musicInfo?_embed=comments&favorited=true`, "favorites")
+  const {activePlaylist, setActivePlaylist} = useContext(songDetails)
 
 
   function handlePlaylistChange(newPlaylist){

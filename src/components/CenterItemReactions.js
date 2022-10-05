@@ -1,10 +1,10 @@
 import React, {useContext} from 'react'
-import { currentlyPlayingSong } from '../CurrentlyPlayingContextProvider'
+import { songDetails } from '../SongDetailsContextProvider'
 import CommentListItem from './CenterItemReactionsComments'
 
 
 function CenterItemReactions(){
-    const {currentlyPlaying, setCurrentlyPlaying} = useContext(currentlyPlayingSong)
+    const {currentlyPlaying, setCurrentlyPlaying} = useContext(songDetails)
 
     const commentListItems = currentlyPlaying.comments.map(comment => <CommentListItem key={comment.id} comment={comment}/>)
 
