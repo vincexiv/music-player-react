@@ -7,7 +7,11 @@ const divStyle = {
 }
 
 const h1Style = {
-    margin: "1rem"
+    margin: "1rem",
+    textAlign: "center",
+    textShadow: "0.1rem 0.1rem 0.1rem white",
+    border: "solid white 0.1rem",
+    boxShadow: "0.1rem 0.1rem 0.1rem black"
 }
 
 const formStyle = {
@@ -20,6 +24,16 @@ const formStyle = {
     bottom: "50%",
 }
 
+const validityStatusStyle = {
+    color: "var(--color-1)",
+    border: "solid white 0.1rem",
+    textShadow: "0.1rem 0.1rem 0.1rem white",
+    margin: "1rem",
+    padding: "0.2rem",
+    boxShadow: "0.1rem 0.1rem 0.1rem black",
+    textAlign: "center"
+}
+
 const inputStyle = {
     border: "none",
     outline: "none",
@@ -27,7 +41,8 @@ const inputStyle = {
     color: "var(--color-3)",
     margin: "1rem",
     padding: "0.2rem",
-    width: "12rem"
+    width: "12rem",
+    boxShadow: "0.1rem 0.1rem 0.1rem black"
 }
 
 const inputLabelStyle = {
@@ -48,4 +63,4 @@ const buttonStyle = {
     margin: "1rem"
 }
 
-export {divStyle, h1Style, formStyle, inputStyle, inputLabelStyle, inputParentStyle, buttonStyle}
+export {divStyle, h1Style, formStyle, inputStyle, inputLabelStyle, inputParentStyle, buttonStyle, validityStatusStyle}

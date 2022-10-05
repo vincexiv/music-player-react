@@ -3,7 +3,11 @@ import { songDetails } from '../SongDetailsContextProvider'
 import {NavLink} from 'react-router-dom'
 
 function NavBar(){
-    const {userDetails} = useContext(songDetails)
+    const {userDetails, setUserDetails} = useContext(songDetails)
+
+    function handleLogout(event){
+        setUserDetails({isLoggedIn: false, data: {}})
+    }
 
     return (
         <nav>
@@ -12,7 +16,7 @@ function NavBar(){
                 <ul className="display-flex list-style-none">
                     <li>Our Merch</li>
                     <li>About Us</li>
-                    <NavLink exact to="/login" id="log-in" className="not-logged-in navlink">
+                    <NavLink exact to="/login" id="log-in" className="not-logged-in navlink" onClick={handleLogout}>
                         {userDetails.isLoggedIn ? "Log Out" : "Log In"}
                     </NavLink>
                 </ul>
