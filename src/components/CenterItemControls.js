@@ -3,7 +3,7 @@ import { songDetails } from '../SongDetailsContextProvider'
 import { availablePlayableSongs } from '../variables'
 
 function CenterItemControls(){
-    const {currentlyPlaying, userDetails} = useContext(songDetails)
+    const {currentlyPlaying} = useContext(songDetails)
     const [songProgress, setSongProgress] = useState(0)
     const playPauseIcon = useRef()
     const intervalId = useRef()
@@ -44,7 +44,7 @@ function CenterItemControls(){
 
     function showSongProgress(){
         intervalId.current = setInterval(()=>{
-            const songExistsAndIsPlayable = Boolean(availablePlayableSongs[currentlyPlaying.songName])
+            const songExistsAndIsPlayable = songIsPlayable(currentlyPlaying.songName)
             const playTime = (songExistsAndIsPlayable ? availablePlayableSongs[currentlyPlaying.songName].currentTime : 0)
             const totalTime = (songExistsAndIsPlayable ? availablePlayableSongs[currentlyPlaying.songName].duration : 1)
             setSongProgress(playTime/totalTime*100)
@@ -55,6 +55,7 @@ function CenterItemControls(){
     function songIsPlayable(songName){
         return Boolean(availablePlayableSongs[songName])
     }
+
 
     function playPauseSong(event){
         if(playPauseIcon.current.classList.contains("fa-circle-play")){
@@ -72,10 +73,19 @@ function CenterItemControls(){
     }
 
 
+    function handleSeek(event){
+        if(songIsPlayable(currentlyPlaying.songName)){
+            const songDuration = availablePlayableSongs[currentlyPlaying.songName].duration
+            availablePlayableSongs[currentlyPlaying.songName].currentTime = songDuration*event.target.value/100
+            setSongProgress(event.target.value)
+        }
+    }
+
+
 
     return (
         <>
-            <input type="range" start="0" end="100" value={songProgress} id="song-progress" />
+            <input type="range" start="0" end="100" value={songProgress} id="song-progress" onChange={handleSeek}/>
             <div id="controls">
                 <i className="fa-solid fa-backward-step fa-1.5x"></i>
                 <i className="fa fa-solid fa-circle-play fa-1.5x" id="play-pause-button" ref={playPauseIcon} onClick={(event)=>{playPauseSong(event)}}></i>
