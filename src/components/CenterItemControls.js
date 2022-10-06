@@ -8,9 +8,8 @@ function CenterItemControls(){
     const playPauseIcon = useRef()
     const intervalId = useRef()
 
-
+    
     // Make the play/pause button show whether the song on the currently playing component is playing
-
     useEffect(() =>{
         if(isCurrentlyPlaying()){
             playPauseIcon.current.classList.add("fa-circle-pause")
@@ -34,7 +33,6 @@ function CenterItemControls(){
         return false
     }
 
-    //----------------------------------------------------------------------------------------------------
 
     function pauseAllOtherPlayingSongs(){
         for(const audio in availablePlayableSongs){

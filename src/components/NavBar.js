@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import { songDetails } from '../SongDetailsContextProvider'
 import {NavLink} from 'react-router-dom'
+import { availablePlayableSongs } from '../variables'
 
 function NavBar(){
     const {userDetails, setUserDetails} = useContext(songDetails)
@@ -8,7 +9,18 @@ function NavBar(){
     function handleLogout(event){
         setUserDetails({isLoggedIn: false, data: {}})
         localStorage.removeItem("userDetails")
+        pauseAllOtherPlayingSongs()
     }
+
+
+    function pauseAllOtherPlayingSongs(){
+        for(const audio in availablePlayableSongs){
+            if(!audio.paused){
+                availablePlayableSongs[audio].pause()
+            }
+        }
+    }
+
 
     return (
         <nav>
