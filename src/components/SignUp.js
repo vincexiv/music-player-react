@@ -79,7 +79,7 @@ function SignUp(){
         <div style={divStyle}>
             <div className="container">
                 <form style={{...formStyle, bottom: "30%"}} onSubmit={handleSignup}>
-                    <h1 style={h1Style}>Create Your Account</h1>
+                    <h1 style={h1Style}>Create Account</h1>
                     
                     {validityState.isValid ? <></> :
                         <p style={validityStatusStyle}>
