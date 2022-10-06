@@ -3,7 +3,7 @@ import { songDetails } from '../SongDetailsContextProvider'
 import PlaylistItem from './RightItemPlaylistItem'
 
 function PlaylistItems(){
-    const {activePlaylist, setCurrentlyPlaying} = useContext(songDetails)
+    const {activePlaylist} = useContext(songDetails)
 
     const songItems = activePlaylist.data.map(songData => (<PlaylistItem key={songData.id} songData={songData}/>))
 

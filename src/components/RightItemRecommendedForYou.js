@@ -3,13 +3,14 @@ import { songDetails } from '../SongDetailsContextProvider'
 import { useQuery } from '../customHooks'
 import { apiHost } from '../variables'
 import PlaylistItem from './RightItemPlaylistItem'
+import {v4 as uuid} from 'uuid'
 
 function RecommendedForYou(){
-    const {currentlyPlaying, setCurrentlyPlaying} = useContext(songDetails)
-    const [recommendedForYou, setRecommendedForYou] = useQuery(`${apiHost}/musicInfo?playList=recommendedForYou`, "recommendedForYou")
+    const {currentlyPlaying} = useContext(songDetails)
+    const [recommendedForYou, setRecommendedForYou] = useQuery(`${apiHost}/musicInfo?_embed=comments&playList=recommendedForYou`, "recommendedForYou")
+    const previouslyPlaying = useRef(currentlyPlaying)
 
     useEffect(()=>{
-        // Update Songs on Recommended for you
         fetch(`http://www.songsterr.com/a/ra/songs/byartists.json?artists="${currentlyPlaying.songArtist}"`)
         .then(result => result.json())
         .then(data => {
@@ -26,8 +27,6 @@ function RecommendedForYou(){
             setRecommendedForYou({...newRecommendedForYou, data: newRecommendedForYou})
         })
     }, [currentlyPlaying])
-
-    console.log("recommended for you", recommendedForYou)
 
 
     function getRandomStartPosition(maxEndPosition){
@@ -63,7 +62,7 @@ function RecommendedForYou(){
     return (
         <div className="bottom">
             <h1>Recommended For You</h1>
-            <ul id="recommended-for-you">{recommendedForYou.data.map(songData => (<PlaylistItem key={songData.id} songData={songData}/>))}</ul>
+            <ul id="recommended-for-you">{recommendedForYou.data.map(songData => (<PlaylistItem key={uuid()} songData={songData}/>))}</ul>
         </div>
     )
 }

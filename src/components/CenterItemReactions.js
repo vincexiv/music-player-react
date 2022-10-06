@@ -9,7 +9,6 @@ function CenterItemReactions(){
     const [newComment, setNewComment] = useState("")
 
     const commentListItems = currentlyPlaying.comments.map(comment => <CommentListItem key={comment.id} comment={comment}/>)
-    console.log("currently playing: ", currentlyPlaying)
 
     function handleNewComment(event){
         setNewComment(event.target.value)
@@ -17,8 +16,6 @@ function CenterItemReactions(){
 
     function handleCommentSubmit(event){
         event.preventDefault()
-
-        console.log(userDetails)
 
         fetch(`${apiHost}/comments`, {
             method: 'POST',
