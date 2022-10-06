@@ -7,6 +7,8 @@ function RightItem({activePlaylist, handlePlaylistChange}){
     const upNext = useRef([])
 
     useEffect(()=>{
+
+        // Update songs in the "up next"
         if(activePlaylist.data.length){
 
             const songIds = activePlaylist.data.map(song => song.id)
