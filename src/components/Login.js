@@ -5,7 +5,8 @@ import { songDetails } from "../SongDetailsContextProvider";
 import {divStyle, h1Style, formStyle, inputStyle, inputLabelStyle, inputParentStyle, buttonStyle, validityStatusStyle} from '../react_styles/login-styles'
 
 function Login(){
-    const {userDetails, setUserDetails} = useContext(songDetails)
+    const {setUserDetails} = useContext(songDetails)
+    const usernameInput = useRef()
     const [formData, setFormData] = useState({username: "", password: ""})
     const navigate = useNavigate()
     const [validityState, setValidityState] = useState({isValid: true, message: ""})
@@ -13,13 +14,12 @@ function Login(){
 
     function handleInputChange(event){
 
-        if(event.target.name === "username"){
-            const usernameIsValid =  /^[A-Za-z0-9]*$/.test(event.target.value)
-            setValidityState({
-                isValid: usernameIsValid,
-                message: usernameIsValid? "" : "name should only contain alphanumeric characters"
-            })
-        }
+        const usernameIsValid =  /^[A-Za-z0-9]*$/.test(usernameInput.current.value)
+        setValidityState({
+            isValid: usernameIsValid,
+            message: usernameIsValid? "" : "name should only contain alphanumeric characters"
+        })
+
         setFormData(formData => ({...formData, [event.target.name]: event.target.value}))
     }
 
@@ -67,7 +67,7 @@ function Login(){
 
                     <div style={inputParentStyle}>
                         <label for="username" style={inputLabelStyle}>Username</label>
-                        <input type="text" name="username" style={inputStyle} value={formData.username} onChange={(event)=>handleInputChange(event)}/>
+                        <input type="text" name="username" ref={usernameInput} style={inputStyle} value={formData.username} onChange={(event)=>handleInputChange(event)}/>
                     </div>
                     <div style={inputParentStyle}>
                         <label for="password" style={inputLabelStyle}>Password</label>
