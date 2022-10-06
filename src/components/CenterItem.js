@@ -4,6 +4,7 @@ import CenterItemControls from './CenterItemControls'
 import CenterItemReactions from './CenterItemReactions'
 
 function CenterItem(){
+
     return (
         <div className="center-item">
             <div id="controls-and-stuff">

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext, useEffect, useRef} from 'react'
 import { songDetails } from '../SongDetailsContextProvider'
 import { apiHost } from '../variables'
 import { updateSongDetails } from '../utilityFunctions'
@@ -6,13 +6,20 @@ import { updateSongDetails } from '../utilityFunctions'
 
 function CenterItemCurrentlyPlaying(){
     const {currentlyPlaying, setCurrentlyPlaying, activePlaylist, setActivePlaylist} = useContext(songDetails)
+    const heartIcon = useRef()
 
     function handleFavoriteClick(){
+        const newNoOfLikes = songIsBeingFavorited()? currentlyPlaying.likes + 1 : currentlyPlaying.likes - 1
+
         updateSongDetails(`
             ${apiHost}/musicInfo/${currentlyPlaying.id}`,
-            {favorited: !currentlyPlaying.favorited},
+            {favorited: !currentlyPlaying.favorited, likes: newNoOfLikes},
             setCurrentlyPlaying
         )
+    }
+
+    function songIsBeingFavorited(){
+        return heartIcon.current.classList.contains('fa-regular')
     }
 
     useEffect(()=>{
@@ -28,7 +35,7 @@ function CenterItemCurrentlyPlaying(){
         <div id="currently-playing">
             <div className="song-name">
                 <h1>{currentlyPlaying.songName}</h1> 
-                <i className={`fa fa-heart ${currentlyPlaying.favorited? 'fa-solid' : 'fa-regular'}`} id="favorite" onClick={()=>handleFavoriteClick()}></i>
+                <i ref={heartIcon} className={`fa fa-heart ${currentlyPlaying.favorited? 'fa-solid' : 'fa-regular'}`} id="favorite" onClick={()=>handleFavoriteClick()}></i>
             </div>
 
             <div id="playing-song-details">
