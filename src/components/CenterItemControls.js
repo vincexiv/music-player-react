@@ -3,10 +3,9 @@ import { songDetails } from '../SongDetailsContextProvider'
 import { availablePlayableSongs } from '../variables'
 
 function CenterItemControls(){
-    const {currentlyPlaying} = useContext(songDetails)
+    const {currentlyPlaying, songIntervalId} = useContext(songDetails)
     const [songProgress, setSongProgress] = useState(0)
     const playPauseIcon = useRef()
-    const intervalId = useRef()
 
     
     // Make the play/pause button show whether the song on the currently playing component is playing
@@ -19,14 +18,14 @@ function CenterItemControls(){
             playPauseIcon.current.classList.remove("fa-circle-pause")
             playPauseIcon.current.classList.add("fa-circle-play")
             setSongProgress(0)
-            clearInterval(intervalId.current)
+            clearInterval(songIntervalId.current)
         }
     }, [currentlyPlaying])
 
 
     useEffect(()=>{
         if(songProgress >=100){
-            clearInterval(intervalId.current)
+            clearInterval(songIntervalId.current)
             playPauseIcon.current.classList.remove("fa-circle-pause")
             playPauseIcon.current.classList.add("fa-circle-play")
         }
@@ -53,7 +52,7 @@ function CenterItemControls(){
     }
 
     function showSongProgress(){
-        intervalId.current = setInterval(()=>{
+        songIntervalId.current = setInterval(()=>{
             const songExistsAndIsPlayable = songIsPlayable(currentlyPlaying.songName)
             const playTime = (songExistsAndIsPlayable ? availablePlayableSongs[currentlyPlaying.songName].currentTime : 0)
             const totalTime = (songExistsAndIsPlayable ? availablePlayableSongs[currentlyPlaying.songName].duration : 1)
@@ -70,13 +69,17 @@ function CenterItemControls(){
 
     function playPauseSong(event){
         if(playPauseIcon.current.classList.contains("fa-circle-play")){
-            pauseAllOtherPlayingSongs()
-            showSongProgress()
-            availablePlayableSongs[currentlyPlaying.songName].play()
-            playPauseIcon.current.classList.remove("fa-circle-play")
-            playPauseIcon.current.classList.add("fa-circle-pause")
+            if(songIsPlayable(currentlyPlaying.songName)){
+                pauseAllOtherPlayingSongs()
+                showSongProgress()
+                availablePlayableSongs[currentlyPlaying.songName].play()
+                playPauseIcon.current.classList.remove("fa-circle-play")
+                playPauseIcon.current.classList.add("fa-circle-pause")
+            }else{
+                alert("Can't play that song\nSorry, it's not you it's me...")
+            }
         }else if(playPauseIcon.current.classList.contains("fa-circle-pause")){
-            clearInterval(intervalId.current)
+            clearInterval(songIntervalId.current)
             availablePlayableSongs[currentlyPlaying.songName].pause()
             playPauseIcon.current.classList.remove("fa-circle-pause")
             playPauseIcon.current.classList.add("fa-circle-play")            

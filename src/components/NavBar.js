@@ -4,12 +4,13 @@ import {NavLink} from 'react-router-dom'
 import { availablePlayableSongs } from '../variables'
 
 function NavBar(){
-    const {userDetails, setUserDetails} = useContext(songDetails)
+    const {userDetails, setUserDetails, songIntervalId} = useContext(songDetails)
 
     function handleLogout(event){
         setUserDetails({isLoggedIn: false, data: {}})
         localStorage.removeItem("userDetails")
         pauseAllOtherPlayingSongs()
+        clearInterval(songIntervalId.current)
     }
 
 
