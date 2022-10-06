@@ -21,7 +21,7 @@ const formStyle = {
     width: "22rem",
     color: "var(--color-1)",
     position: "absolute",
-    bottom: "50%",
+    bottom: "40%",
 }
 
 const validityStatusStyle = {

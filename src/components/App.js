@@ -4,6 +4,7 @@ import NavBar from './NavBar'
 import Footer from './Footer'
 import Home from './Home'
 import Login from './Login'
+import SignUp from './SignUp'
 import '../css/style.css'
 import '../css/index.css'
 import '../css/responsive.css'
@@ -19,6 +20,7 @@ function App(){
         <Route path="/home" element={<Home />} />
         <Route exact path="/login" element={<Login />}/>
         <Route path="" element={<Login />} />
+        <Route exact path="/signup" element={<SignUp />} />
       </Routes>
 
       <Footer />

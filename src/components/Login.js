@@ -24,7 +24,7 @@ function Login(){
     }
 
     function someInputsAreEmpty(formData){
-        return !formData.username.length && !formData.password.length
+        return !formData.username.length || !formData.password.length
     }
 
 
@@ -32,7 +32,7 @@ function Login(){
         event.preventDefault()
         
         if(someInputsAreEmpty(formData)){
-            setValidityState({isValid: false, message: "name/email cannot be blank"})
+            setValidityState({isValid: false, message: "input fields cannot be blank"})
             
         }else if(validityState.isValid){
             setValidityState({isValid: false, message: "Loading..."})
@@ -50,6 +50,11 @@ function Login(){
                 }
             })
         }
+    }
+
+
+    function handleSignUpClick(event){
+        navigate("/signup")
     }
 
 
@@ -74,6 +79,7 @@ function Login(){
                         <input type="password" name="password" style={inputStyle} value={formData.password} onChange={(event)=>handleInputChange(event)}/>
                     </div>
                     <input type="submit" value="SIGN IN" className="btn" style={buttonStyle}/>
+                    <button className="btn" style={{...buttonStyle, backgroundColor: "var(--color-1)"}} onClick={handleSignUpClick}>GO TO SIGN UP</button>
                 </form>
             </div>
         </div>
