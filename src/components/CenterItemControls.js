@@ -23,6 +23,16 @@ function CenterItemControls(){
         }
     }, [currentlyPlaying])
 
+
+    useEffect(()=>{
+        if(songProgress >=100){
+            clearInterval(intervalId.current)
+            playPauseIcon.current.classList.remove("fa-circle-pause")
+            playPauseIcon.current.classList.add("fa-circle-play")
+        }
+    }, [songProgress])
+
+
     function isCurrentlyPlaying(){
         for(const audioName in availablePlayableSongs){
             if(!availablePlayableSongs[audioName].paused){
@@ -48,6 +58,7 @@ function CenterItemControls(){
             const playTime = (songExistsAndIsPlayable ? availablePlayableSongs[currentlyPlaying.songName].currentTime : 0)
             const totalTime = (songExistsAndIsPlayable ? availablePlayableSongs[currentlyPlaying.songName].duration : 1)
             setSongProgress(playTime/totalTime*100)
+
             console.log(songProgress)
         }, 100)
     }
