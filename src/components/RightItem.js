@@ -19,7 +19,7 @@ function RightItem({activePlaylist, handlePlaylistChange}){
                 songArray.push(activePlaylist.data[i] || activePlaylist.data[i - songIds.length])
             }
     
-            upNext.current = songArray.map(data => <li key={data.id} style={{whiteSpace: "nowrap", textOverflow: "ellipsis",  overflowWrap: "break-word"}}>
+            upNext.current = songArray.map(data => <li key={data.id} style={{fontSize: "0.7rem", whiteSpace: "nowrap", textOverflow: "ellipsis",  overflowWrap: "break-word"}}>
                     {data.songName}
                 </li>)
         }

@@ -39,13 +39,14 @@ function Login(){
             fetch(`${apiHost}/users?username=${formData.username}&password=${formData.password}`)
             .then(result => result.json())
             .then(data => {
-                console.log("ddata awe got back: ", data)
+                localStorage.setItem("userDetails", JSON.stringify({isLoggedIn: false, userDetails: data[0]}))
                 if(Boolean(data[0])){
                     setUserDetails({isLoggedIn: true, userDetails: data[0]})
                     localStorage.setItem("userDetails", JSON.stringify({isLoggedIn: true, userDetails: data[0]}))
                     navigate("/home")
                 }else{
                     setValidityState({isValid: false, message: "error in email or password"})
+                    navigate("/login")
                 }
             })
         }
