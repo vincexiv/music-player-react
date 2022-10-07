@@ -19,7 +19,7 @@ You can see a live demo of by visiting [this page](https://633f2a07c0a79e054a601
 Watch the project in action through this [demo video]. There, you will see what you can do when you open the app through the  live link shared above. Some of those things are discussed below too, so be sure to check them out.
 
 ## Project Owner
-**Vincent Makokha*
+**Vincent Makokha**
 
 ## Description
 This project is an improvement of a similar project I did sometimes back. Find the github repo for the original project [here](https://github.com/VinceXIV/music-player). The improvement has been done by using React in stead of vanilla JavaScript. Doing this is beneficial in many ways including increased productivity. Some of the features of react used in this project include;
@@ -32,7 +32,7 @@ Some of the hooks used are useEffect, useContext, useRef, useState etc.
 I also created a few custom hooks to handle certain scenarios
 ### 5. React Context
 Some elements were just better handled by creating a context and wrapping some compoments in it. For instance, the object "currentlyPlaying" which shows the music item that is active and in the "currently playing" section at the center of the page, is needed by nearly every component in this app. Using props to handle this made the code feel cluttered and error prone. creating a context for it, and a few other function brought back sanity to the code.
-#### 6. Routing
+### 6. Routing
 This was done using **react-router-dom**. Thus, even though this was a single page application, routing mechanisms made it feel like it's multiple pages. Clicking on certain items such as the logout changed the content shown as well as the url. Routing also made it possible for redirecting. For instance, clicking on the homepage which ordinarily opens homepage would redirect one to log in if they are not logged in yet.
 "Normal" vanilla javascript functionalities were also performed including event listening, the CRUD operations, etc. Two apis have been used, one of which I created and hosted it on Heroku. That one contained information about the users, songs, and comments. Find out more about the data by following this [link](https://music-player555.herokuapp.com).
 
