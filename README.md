@@ -13,7 +13,7 @@ This is a music website, named VintageBeats. It is a place where you get to expl
 October 7, 2022
 
 ## Live Link
-You can see a live demo of by visiting [this page](https://633f2a07c0a79e054a601ece--superlative-valkyrie-a494da.netlify.app/).
+You can see a live demo of by visiting [this link](https://633f2a07c0a79e054a601ece--superlative-valkyrie-a494da.netlify.app/).
 
 ## Live Demo
 Watch the project in action through this [demo video]. There, you will see what you can do when you open the app through the  live link shared above. Some of those things are discussed below too, so be sure to check them out.
