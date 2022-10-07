@@ -7,7 +7,7 @@ This is a music website, named VintageBeats. It is a place where you get to expl
 3. [music comments](https://music-player555.herokuapp.com/comments): For each song I fetched, I embedded the comments. You will notice that each comment has a songId, that shows which song this comment belongs to
 3. [music comments](https://music-player555.herokuapp.com/users): One can only log in using the credentials in this list. When logging in, the input is checked to see if it merges with the one in the database (this list) and if no match is found, logging in fails.
 4. [Live demo of the project](#)
-5. [Songsterr publick API](http://www.songsterr.com/a/ra/songs): I used this to fetch songs for the recommended for you section. Songs were fetched each time the song in the "currentlyPlaying" section changed
+5. [Songsterr publick API](http://www.songsterr.com): I used this to fetch songs for the recommended for you section. Songs were fetched each time the song in the "currentlyPlaying" section changed
 
 ## Date of Current Version
 October 7, 2022
