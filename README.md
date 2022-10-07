@@ -2,7 +2,7 @@
 
 ## Brief Description
 This is a music website, named VintageBeats. It is a place where you get to explore some of the most music gems from the past and some of the modern music that have drawn a huge inspiration from the classic awesome beats. Here are the important links that you will find in this readme.
-1. [Project Live Link](https://633f2a07c0a79e054a601ece--superlative-valkyrie-a494da.netlify.app/login)
+1. [Project Live Link](https://633f2a07c0a79e054a601ece--superlative-valkyrie-a494da.netlify.app)
 2. [music information data](https://music-player555.herokuapp.com/musicInfo): I used this to provide the list of songs that I displayed on various playlists such as blues/jazz and blues/rock
 3. [music comments](https://music-player555.herokuapp.com/comments): For each song I fetched, I embedded the comments. You will notice that each comment has a songId, that shows which song this comment belongs to
 3. [music comments](https://music-player555.herokuapp.com/users): One can only log in using the credentials in this list. When logging in, the input is checked to see if it merges with the one in the database (this list) and if no match is found, logging in fails.
