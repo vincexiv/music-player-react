@@ -64,8 +64,7 @@ The project uses React so you'll need to set up node, which will enable you to r
 1. Clone the repo to get it locally on your computer. You can also fork the repo and get your own copy that you can clone
 2. Navigate to the relevant directory and open it with your preferred editor
 3. Run `npm install` to install all required modules
-4. Open another terminal in the same directory and run `npm run server`
-5. Now you have the project working. You can make modifications to the files and see their effect on the page opened in the browser when you clicked `npm start`
+5. Now you have the project working, unless the backend isn't working as expected. You can make modifications to the files and see their effect on the page opened in the browser when you clicked `npm start`
 
 ## Support and Contact Details
 name: Vincent Makokha
