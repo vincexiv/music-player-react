@@ -1,4 +1,4 @@
-const apiHost = "https://music-player555.herokuapp.com";
+const apiHost = "";
 
 const availablePlayableSongs = {
     "Invitation To The Blues": new Audio('./assets/music/blues-jazz/Claudia Bettinaglio - Invitation To The Blues.mp3'),
