@@ -8,11 +8,11 @@ import CenterItem from "./CenterItem";
 
 
 function Home(){
-    const {activePlaylist, setActivePlaylist, userDetails} = useContext(songDetails)
+    const {activePlaylist, setActivePlaylist} = useContext(songDetails)
   
-    if(!userDetails.isLoggedIn){
-        return <Navigate to="/login"/>
-    }
+    // if(!userDetails.isLoggedIn){
+    //     return <Navigate to="/login"/>
+    // }
   
     function handlePlaylistChange(newPlaylist){
       if(newPlaylist === "favorites"){
